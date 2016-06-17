@@ -1,0 +1,85 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Javascript Flashcards</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="jsFlashcards.css">
+
+</head>
+<body>
+
+<p id="header">Javascript Study Cards</p>
+<div id="card">
+	<div id = "cardContent">
+		<div id = "showQuestion"></div><br>
+		<input type="textarea" id="TextInput" placeholder="Your answer" COLS=40 ROWS=6 style="overflow: scroll"><br><br>
+		 <button id="button" onclick="showAnswer()" >See answer</button>
+		<div id = "displayAnswer"></div> <br>
+	</div>
+</div>
+<script>
+
+var qa = [
+
+// About string methods
+	{q: "What does the length property do?",
+	 a: "returns the length of a string"},
+	{q: "What does the indexOf() method do?",
+	 a: "returns the index of (the position of) the first occurrence of a specified text in a string"},
+	{q: "What does the lastIndexOf() method do?",
+	 a: "returns the index of the last occurrence of a specified text in a string"},
+	{q: "What does the search() method do?",
+	 a: "searches a string for a specified value and returns the position of the match"},
+	{q: "What does the slice() method do?",
+	 a: "extracts a part of a string and returns the extracted part in a new string"},
+	{q: "What is the substring() similar to, and how is it different from the thing that it's similar to?",
+	 a: "It is similar to slice(). The difference is that substring() cannot accept negative indexes."},
+	{q: "What is the substr() similar to, and how is it different from the thing that it's similar to?",
+	 a: "It is similar to slice(). The difference is that the second parameter specifies the length of the extracted part."},
+	{q: "What does the replace() method do?",
+	 a: "replaces a specified value with another value in a string"}
+]
+
+var randomNumber = Math.floor(Math.random() * qa.length);
+var randomQ = qa[randomNumber].q;
+var answer = qa[randomNumber].a;
+
+
+window.onload = init;
+function init() {
+	var showQuestion = document.getElementById("showQuestion");
+	showQuestion.innerHTML = "Question: " + randomQ;
+}
+
+var reload = function() {
+	location.reload()
+}
+
+
+function showAnswer() {
+	var displayAnswer = document.getElementById("displayAnswer");
+	var refreshPage = document.getElementById("refreshPage");
+	displayAnswer.innerHTML = "Answer: " + answer;
+	var btn = document.createElement("BUTTON");
+    var t = document.createTextNode("Another card");
+    btn.appendChild(t);
+    cardContent.appendChild(btn);
+	
+    btn.onclick = function() {
+    	location.reload(true);
+    
+	}
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
